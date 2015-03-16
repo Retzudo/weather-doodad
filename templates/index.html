@@ -1,10 +1,10 @@
 {%- macro sun_icon(percent) -%}
     {% if percent > 90 %}
-        <i class="icon-uni42 yellow"></i>
+        <i class="icon-sunny yellow"></i>
     {% elif percent > 50 %}
-        <i class="icon-uni48 yellow-grey"></i>
+        <i class="icon-cloudy yellow-grey"></i>
     {% else %}
-        <i class="icon-uni59 grey"></i>
+        <i class="icon-overcast grey"></i>
     {% endif %}
 {%- endmacro -%}
 <!DOCTYPE html>
@@ -18,8 +18,8 @@
     </head>
 
     <body>
-        <h1>{{ temperature }} °C</h1>
-        <h1>{{ humidity|int  }} %</h1>
+        <h1><i class="icon-temperature"></i> {{ temperature }} °C</h1>
+        <h1><i class="icon-humidity"></i> {{ humidity|int  }} %</h1>
         <h1>{{ sun_icon(sun) }}</h1>
     </body>
 </html>
