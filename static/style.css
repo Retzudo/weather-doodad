@@ -212,8 +212,10 @@
 }
 
 body {
-    font-family: 'Arvo', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: normal;
+    background-color: rgb(138, 220, 179);
+    color: white;
 }
 
 h1 {
@@ -223,7 +225,7 @@ h1 {
 }
 
 .yellow {
-    color: hsla(51, 65%, 66%, 1);
+    color: hsla(51, 100%, 74%, 1);
 }
 
 .yellow-grey {
