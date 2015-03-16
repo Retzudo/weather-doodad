@@ -10,7 +10,6 @@ CITY = os.getenv('CITY', 'Ried im Innkreis')
 URL = 'http://zamg.ac.at/cms/de/wetter/wetterwerte-analysen/{state}'
 
 app = Flask(__name__)
-app.debug = True
 
 
 def get_weather_html():
