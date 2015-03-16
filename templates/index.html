@@ -1,8 +1,16 @@
-{%- macro sun_icon(percent) -%}
+{%- macro sun_icon(percent, day=True) -%}
     {% if percent > 90 %}
-        <i class="icon-sunny yellow"></i>
+        {% if day %}
+            <i class="icon-clear-day yellow"></i>
+        {% else %}
+            <i class="icon-clear-night blue"></i>
+        {% endif %}
     {% elif percent > 50 %}
-        <i class="icon-cloudy yellow-grey"></i>
+        {% if day %}
+            <i class="icon-cloudy-day yellow-grey"></i>
+        {% else %}
+            <i class="icon-cloudy-night blue-grey"></i>
+        {% endif %}
     {% else %}
         <i class="icon-overcast grey"></i>
     {% endif %}
@@ -20,7 +28,7 @@
     <body>
         <h1><i class="icon-temperature"></i> {{ temperature }} °C</h1>
         <h1><i class="icon-humidity"></i> {{ humidity|int  }} %</h1>
-        <h1>{{ sun_icon(sun) }}</h1>
+        <h1>{{ sun_icon(percent=sun, day=is_it_day) }}</h1>
         <footer>
             <a href="https://github.com/Retzudo/weather-doodad"><i class="icon-github"></i></a> | 
             <a href="http://zamg.ac.at">ZAMG</a>

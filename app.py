@@ -1,4 +1,5 @@
 #!./env/bin/python3
+import datetime
 import os
 import urllib.request
 from bs4 import BeautifulSoup
@@ -9,6 +10,9 @@ from flask import render_template
 STATE = os.getenv('STATE', 'oberoesterreich')
 CITY = os.getenv('CITY', 'Ried im Innkreis')
 URL = 'http://zamg.ac.at/cms/de/wetter/wetterwerte-analysen/{state}'
+
+SUNRISE = datetime.time(6, 0)
+SUNSET = datetime.time(20, 0)
 
 app = Flask(__name__)
 
@@ -51,7 +55,8 @@ def index(state=STATE, city=CITY):
     state = state.lower()
     city = city.replace('+', ' ')
     temperature, humidity, sun = get_weather(state=state, city=city)
-    return render_template('index.html', temperature=temperature, humidity=humidity, sun=sun)
+    is_it_day = SUNSET > datetime.datetime.now().time() > SUNRISE
+    return render_template('index.html', temperature=temperature, humidity=humidity, sun=sun, is_it_day=is_it_day)
 
 
 if __name__ == '__main__':
