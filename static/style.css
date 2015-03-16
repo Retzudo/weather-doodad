@@ -1,52 +1,56 @@
 @font-face {
-	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?45kisn');
-	src:url('fonts/icomoon.eot?#iefix45kisn') format('embedded-opentype'),
-		url('fonts/icomoon.woff?45kisn') format('woff'),
-		url('fonts/icomoon.ttf?45kisn') format('truetype'),
-		url('fonts/icomoon.svg?45kisn#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'icomoon';
+    src:url('fonts/icomoon.eot?45kisn');
+    src:url('fonts/icomoon.eot?#iefix45kisn') format('embedded-opentype'),
+        url('fonts/icomoon.woff?45kisn') format('woff'),
+        url('fonts/icomoon.ttf?45kisn') format('truetype'),
+        url('fonts/icomoon.svg?45kisn#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-github:before {
+	content: "\eab1";
 }
 
 .icon-cloudy:before {
-	content: "\f002";
+    content: "\f002";
 }
 
 .icon-sunny:before {
-	content: "\f00d";
+    content: "\f00d";
 }
 
 .icon-overcast:before {
-	content: "\f013";
+    content: "\f013";
 }
 
 .icon-humidity:before {
-	content: "\f04e";
+    content: "\f04e";
 }
 
 .icon-temperature:before {
-	content: "\f055";
+    content: "\f055";
 }
 
 body {
     font-family: 'Raleway', sans-serif;
     font-weight: normal;
-    background-color: rgb(138, 220, 179);
+    background-color: hsla(150, 54%, 70%, 1);
     color: white;
 }
 
@@ -69,3 +73,21 @@ h1 {
     color: gray;
 }
 
+footer,
+footer a,
+footer a:hover,
+footer a:active,
+footer a:visited {
+    color: hsla(150, 54%, 50%, 1);
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+}
