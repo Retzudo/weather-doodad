@@ -1,0 +1,25 @@
+{%- macro sun_icon(percent) -%}
+    {% if percent > 90 %}
+        <i class="icon-uni42 yellow"></i>
+    {% elif percent > 50 %}
+        <i class="icon-uni48 yellow-grey"></i>
+    {% else %}
+        <i class="icon-uni59 grey"></i>
+    {% endif %}
+{%- endmacro -%}
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Weather</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="/static/style.css">
+    </head>
+
+    <body>
+        <h1>{{ temperature }} °C</h1>
+        <h1>{{ humidity|int  }} %</h1>
+        <h1>{{ sun_icon(sun) }}</h1>
+    </body>
+</html>
