@@ -1,11 +1,12 @@
 #!./env/bin/python3
 import urllib.request
+import os
 from flask import Flask
 from flask import render_template
 from bs4 import BeautifulSoup
 
 STATE = 'oberoesterreich'
-CITY = 'Ried im Innkreis'
+CITY = os.getenv('CITY', 'Ried im Innkreis')
 URL = 'http://zamg.ac.at/cms/de/wetter/wetterwerte-analysen/{state}'
 
 app = Flask(__name__)
