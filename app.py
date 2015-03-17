@@ -21,7 +21,7 @@ def get_weather_html(state=STATE):
     """Get the HTML from ZAMG or throw a 404 error."""
     try:
         response = urllib.request.urlopen(URL.format(state=state))
-    except HTTPError:
+    except urllib.error.HTTPError:
         abort(404)
 
     return response.read()
