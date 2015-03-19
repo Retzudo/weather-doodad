@@ -1,38 +1,8 @@
-{%- macro sun_icon(percent, day=True) -%}
-    {% if percent > 90 %}
-        {% if day %}
-            <i class="icon-clear-day yellow"></i>
-        {% else %}
-            <i class="icon-clear-night blue"></i>
-        {% endif %}
-    {% elif percent > 50 %}
-        {% if day %}
-            <i class="icon-cloudy-day yellow-grey"></i>
-        {% else %}
-            <i class="icon-cloudy-night blue-grey"></i>
-        {% endif %}
-    {% else %}
-        <i class="icon-overcast grey"></i>
-    {% endif %}
-{%- endmacro -%}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Weather</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="refresh" content="3600">
-        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
+{% extends 'master.html' %}
+{% import 'sunshine-macro.html' as sunshine %}
 
-    <body>
-        <h1><i class="icon-temperature"></i> {{ temperature }} °C</h1>
-        <h1><i class="icon-humidity"></i> {{ humidity|int  }} %</h1>
-        <h1>{{ sun_icon(percent=sun, day=is_it_day) }}</h1>
-        <footer>
-            <a href="https://github.com/Retzudo/weather-doodad"><i class="icon-github"></i></a> | 
-            <a href="http://zamg.ac.at">ZAMG</a>
-        </footer>
-    </body>
-</html>
+{% block content %}
+    <h1><i class="icon-temperature"></i> {{ temperature }} °C</h1>
+    <h1><i class="icon-humidity"></i> {{ humidity|int  }} %</h1>
+    <h1>{{ sunshine.sun_icon(percent=sun, day=is_it_day) }}</h1>
+{% endblock %}
