@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from flask import abort
 from flask import Flask
 from flask import render_template
+from flask import send_from_directory
 
 STATE = os.getenv('STATE', 'oberoesterreich')
 CITY = os.getenv('CITY', 'Ried im Innkreis')
@@ -57,6 +58,11 @@ def index(state=STATE, city=CITY):
     temperature, humidity, sun = get_weather(state=state, city=city)
     is_it_day = SUNSET > datetime.datetime.now().time() > SUNRISE
     return render_template('index.html', temperature=temperature, humidity=humidity, sun=sun, is_it_day=is_it_day)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static/favicon'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.errorhandler(404)
