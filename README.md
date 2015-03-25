@@ -10,4 +10,5 @@ You want these ENV vars when deploying on Heroku (or running the thing in genera
 - `TZ` (probably 'Europe/Vienna')
 
 Click this button for magic:
+
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
