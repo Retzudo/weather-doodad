@@ -2,6 +2,7 @@
     "name": "Retzudo's Weather Doodad",
     "description": "Display weather for all major Austrian cities in a neat way (using public ZAMG data).",
     "repository": "https://github.com/Retzudo/weather-doodad",
+    "logo": "https://raw.githubusercontent.com/Retzudo/weather-doodad/master/static/favicon/orig.png"
     "env": {
         "CITY": "Wien Innere Stadt",
         "STATE": "wien",
