@@ -32,7 +32,7 @@ def get_weather(state=STATE, city=CITY):
     """Find the table row with the requested city name or go 404."""
     html = BeautifulSoup(get_weather_html(state=state))
     link = html.find('a', text=city)
-    if link == None:
+    if link is None:
         abort(404)
 
     row = link.parent.parent
@@ -46,8 +46,11 @@ def get_weather(state=STATE, city=CITY):
     # Remove the % from the 'sunlight' string
     sun_string = row.contents[7].string
     sun = float(sun_string[:sun_string.find('%')].strip())
+    # Remove the 'mm' from the rain string
+    rain_string = row.contents[6].getText()
+    rain = float(rain_string[:rain_string.find('mm')].strip())
 
-    return (temp, humidity, sun)
+    return (temp, humidity, sun, rain)
 
 
 @app.route('/')
@@ -55,14 +58,25 @@ def get_weather(state=STATE, city=CITY):
 def index(state=STATE, city=CITY):
     state = state.lower()
     city = city.replace('+', ' ')
-    temperature, humidity, sun = get_weather(state=state, city=city)
+    temperature, humidity, sun, rain = get_weather(state=state, city=city)
     is_it_day = SUNSET > datetime.datetime.now().time() > SUNRISE
-    return render_template('index.html', temperature=temperature, humidity=humidity, sun=sun, is_it_day=is_it_day)
+    return render_template(
+        'index.html',
+        temperature=temperature,
+        humidity=humidity,
+        sun=sun,
+        rain=rain,
+        is_it_day=is_it_day
+    )
 
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static/favicon'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(
+        os.path.join(app.root_path, 'static/favicon'),
+        'favicon.ico',
+        mimetype='image/vnd.microsoft.icon'
+    )
 
 
 @app.errorhandler(404)

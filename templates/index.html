@@ -4,5 +4,5 @@
 {% block content %}
     <h1><i class="icon-temperature"></i> {{ temperature }} °C</h1>
     <h1><i class="icon-humidity"></i> {{ humidity|int  }} %</h1>
-    <h1>{{ sunshine.sun_icon(percent=sun, day=is_it_day) }}</h1>
+    <h1>{{ sunshine.sun_icon(percent=sun, rain=rain, day=is_it_day) }}</h1>
 {% endblock %}

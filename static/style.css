@@ -1,58 +1,66 @@
 @font-face {
-	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?kivxf');
-	src:url('fonts/icomoon.eot?#iefixkivxf') format('embedded-opentype'),
-		url('fonts/icomoon.woff?kivxf') format('woff'),
-		url('fonts/icomoon.ttf?kivxf') format('truetype'),
-		url('fonts/icomoon.svg?kivxf#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'icomoon';
+    src:url('fonts/icomoon.eot?kivxf');
+    src:url('fonts/icomoon.eot?#iefixkivxf') format('embedded-opentype'),
+        url('fonts/icomoon.woff?kivxf') format('woff'),
+        url('fonts/icomoon.ttf?kivxf') format('truetype'),
+        url('fonts/icomoon.svg?kivxf#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.icon-github:before {
-	content: "\eab1";
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-cloudy-day:before {
-	content: "\f002";
+    content: "\f002";
+}
+
+.icon-cloudy-day-rain:before {
+    content: "\f008";
 }
 
 .icon-clear-day:before {
-	content: "\f00d";
+    content: "\f00d";
 }
 
 .icon-overcast:before {
-	content: "\f013";
+    content: "\f013";
+}
+
+.icon-rain:before {
+    content: "\f019";
+}
+
+.icon-cloudy-night-rain:before {
+    content: "\f028";
 }
 
 .icon-clear-night:before {
-	content: "\f02e";
+    content: "\f02e";
 }
 
 .icon-humidity:before {
-	content: "\f04e";
+    content: "\f04e";
 }
 
 .icon-temperature:before {
-	content: "\f055";
+    content: "\f055";
 }
 
 .icon-cloudy-night:before {
-	content: "\f086";
+    content: "\f086";
 }
 
 body {

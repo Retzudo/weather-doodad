@@ -1,4 +1,4 @@
-{%- macro sun_icon(percent, day=True) -%}
+{%- macro sun_icon(percent=100, rain=0, day=True) -%}
     {% if percent > 90 %}
         {% if day %}
             <i class="icon-clear-day yellow" title="{{ percent }}%"></i>
@@ -7,11 +7,15 @@
         {% endif %}
     {% elif percent > 50 %}
         {% if day %}
-            <i class="icon-cloudy-day yellow-grey" title="{{ percent }}%"></i>
+            <i class="icon-cloudy-day{% if rain > 0 %}-rain{% endif %} yellow-grey" title="{{ percent }}%"></i>
         {% else %}
-            <i class="icon-cloudy-night blue-grey" title="{{ percent }}%"></i>
+            <i class="icon-cloudy-night{% if rain > 0 %}-rain{% endif %} blue-grey" title="{{ percent }}%"></i>
         {% endif %}
     {% else %}
-        <i class="icon-overcast grey" title="{{ percent }}%"></i>
+        {% if rain > 0 %}
+            <i class="icon-rain grey" title="{{ percent }}%"></i>
+        {% else %}
+            <i class="icon-overcast grey" title="{{ percent }}%"></i>
+        {% endif %}
     {% endif %}
 {%- endmacro -%}
