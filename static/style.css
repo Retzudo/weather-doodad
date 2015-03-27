@@ -23,6 +23,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-github:before {
+    content: "\eab1";
+}
+
 .icon-cloudy-day:before {
     content: "\f002";
 }
