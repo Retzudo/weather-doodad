@@ -3,6 +3,7 @@ import datetime
 import os
 import urllib.request
 from bs4 import BeautifulSoup
+from collections import namedtuple
 from flask import abort
 from flask import Flask
 from flask import render_template
@@ -16,6 +17,8 @@ SUNRISE = datetime.time(6, 0)
 SUNSET = datetime.time(20, 0)
 
 app = Flask(__name__)
+
+Weather = namedtuple("Weather", ["temperature", "humidity", "sun", "rain"])
 
 
 def get_weather_html(state=STATE):
@@ -50,7 +53,7 @@ def get_weather(state=STATE, city=CITY):
     rain_string = row.contents[6].getText()
     rain = float(rain_string[:rain_string.find('mm')].strip())
 
-    return (temp, humidity, sun, rain)
+    return Weather(temp, humidity, sun, rain)
 
 
 @app.route('/')
@@ -58,14 +61,14 @@ def get_weather(state=STATE, city=CITY):
 def index(state=STATE, city=CITY):
     state = state.lower()
     city = city.replace('+', ' ')
-    temperature, humidity, sun, rain = get_weather(state=state, city=city)
+    weather = get_weather(state=state, city=city)
     is_it_day = SUNSET > datetime.datetime.now().time() > SUNRISE
     return render_template(
         'index.html',
-        temperature=temperature,
-        humidity=humidity,
-        sun=sun,
-        rain=rain,
+        temperature=weather.temperature,
+        humidity=weather.humidity,
+        sun=weather.sun,
+        rain=weather.rain,
         is_it_day=is_it_day
     )
 
