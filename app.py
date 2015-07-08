@@ -51,7 +51,10 @@ def get_weather(state=STATE, city=CITY):
     sun = float(sun_string[:sun_string.find('%')].strip())
     # Remove the 'mm' from the rain string
     rain_string = row.contents[6].getText()
-    rain = float(rain_string[:rain_string.find('mm')].strip())
+    if rain_string != 'n.v.':
+        rain = float(rain_string[:rain_string.find('mm')].strip())
+    else:
+        rain = 0.0
 
     return Weather(temp, humidity, sun, rain)
 
