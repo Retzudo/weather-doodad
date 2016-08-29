@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from collections import namedtuple
 from flask import abort
 from flask import Flask
+from flask import jsonify
 from flask import render_template
 from flask import send_from_directory
 
@@ -33,7 +34,7 @@ def get_weather_html(state=STATE):
 
 def get_weather(state=STATE, city=CITY):
     """Find the table row with the requested city name or go 404."""
-    html = BeautifulSoup(get_weather_html(state=state))
+    html = BeautifulSoup(get_weather_html(state=state), 'html.parser')
     link = html.find('a', text=city)
     if link is None:
         abort(404)
@@ -74,6 +75,24 @@ def index(state=STATE, city=CITY):
         rain=weather.rain,
         is_it_day=is_it_day
     )
+
+
+@app.route('/weather.json')
+@app.route('/<string:state>/<string:city>.json')
+def json(state=STATE, city=CITY):
+    pass
+    state = state.lower()
+    city = city.replace('+', ' ')
+    weather = get_weather(state=state, city=city)
+    is_it_day = SUNSET > datetime.datetime.now().time() > SUNRISE
+
+    return jsonify({
+        'temperature': weather.temperature,
+        'humidity': weather.humidity,
+        'sun': weather.sun,
+        'rain': weather.rain,
+        'day': is_it_day
+    })
 
 
 @app.route('/favicon.ico')

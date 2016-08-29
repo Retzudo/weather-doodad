@@ -25,6 +25,15 @@ class TestCase(unittest.TestCase):
         response = self.app.get('/asdf')
         self.assertEqual(response.status_code, 404)
 
+    def test_json(self):
+        response = self.app.get('/weather.json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.mimetype, 'application/json')
+
+        response = self.app.get('/wien/Wien+Innere+Stadt.json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.mimetype, 'application/json')
+
 
 if __name__ == '__main__':
     unittest.main()
